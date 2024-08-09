@@ -20,7 +20,7 @@ class ClientController{
         if(!client){
             throw new Error("Client not found")
         }
-        delete client.dataValues.password
+
         return client
     }
 

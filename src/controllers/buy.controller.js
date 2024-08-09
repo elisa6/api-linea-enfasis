@@ -20,7 +20,7 @@ class BuyController{
         if(!buy){
             throw new Error("Buy not found")
         }
-        delete buy.dataValues.password
+
         return buy
     }
 

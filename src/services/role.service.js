@@ -11,9 +11,9 @@ class RoleService {
 		return roles
 	}
 
-	async create(date, amount, price, userId, clientId, productId, storeId) {
+	async create(name, status) {
 		const values = {
-			date, amount, price, userId, clientId, productId, storeId
+			name, status
 		}
 
 		const role = await this.model.create(values, {})
