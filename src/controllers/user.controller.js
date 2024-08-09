@@ -10,15 +10,15 @@ class UserController{
         return users
     }
 
-    async create(name, email, password, status, areaId, area){
-        const user = await this.service.create(name, email, password, status, areaId, area)
+    async create(name, lastName, identification, email, password, phoneNumber, address, status, rolId){
+        const user = await this.service.create(name, lastName, identification, email, password, phoneNumber, address, status, rolId)
         return user
     }
 
     async findOne(id){
         const user = await this.service.findOne(id)
         if(!user){
-            throw new Error("Usuario no encontrado")
+            throw new Error("User not found")
         }
         delete user.dataValues.password
         return user
@@ -27,7 +27,7 @@ class UserController{
     async update(id, values){
         const user = await this.service.update(id, values)
         if (!user){
-            throw new Error("Usuario no encontrado")
+            throw new Error("User not found")
         }
         return user
     }
@@ -35,7 +35,7 @@ class UserController{
     async delete(id){
         const user = await this.service.delete(id)
         if (!user){
-            throw new Error("Usuario no encontrado")
+            throw new Error("User not found")
         }
         return user
     }

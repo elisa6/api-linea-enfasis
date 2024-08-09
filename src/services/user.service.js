@@ -6,45 +6,22 @@ class UserService {
 	}
 
 	async getAll() {
-		const users = await this.model.findAll({
-			// include: ['area']
-		})
+		const users = await this.model.findAll({})
 
 		return users
 	}
 
-	async create(name, email, password, status, areaId, area) {
-		if (areaId && area) {
-			throw new Error("You can't create areaId and area at same time.")
-		}
-
+	async create(name, lastName, identification, email, password, phoneNumber, address, status, rolId) {
 		const values = {
-			name,
-			email,
-			password,
-			status
+			name, lastName, identification, email, password, phoneNumber, address, status, rolId
 		}
 
-		if (areaId) {
-			values.areaId = areaId
-		}
-
-		if(area){
-			values.area = area
-		}
-
-		const user = await this.model.create(values, {
-			// include: [{
-			// 	// association: 'area'
-			// }]
-		})
+		const user = await this.model.create(values, {})
 		return user
 	}
 
 	async findOne(id){
-		const user = await this.model.findByPk(id, {
-			// include: ['area']
-		})
+		const user = await this.model.findByPk(id, {})
 		return user
 	}
 
